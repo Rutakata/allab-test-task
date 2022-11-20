@@ -1,17 +1,18 @@
-import React from 'react';
-import './App.css';
-import JobBoardItem from './Components/JobBoardItem';
+import React from "react";
+import { Navigate, Route, Routes } from "react-router-dom";
+import "./App.css";
+import DetailedJob from "./Components/DetailedJob/DetailedJob";
+import JobsBoardContainer from "./Components/JobsBoard/JobsBoardContainer";
 
-function App() {
+
+const App:React.FC = () => {
   return (
-    <div className="App container bg-gray-400 px-64 pt-7 h-full">
-      <JobBoardItem />
-      <JobBoardItem />
-      <JobBoardItem />
-      <JobBoardItem />
-      <JobBoardItem />
-      <JobBoardItem />
-      <JobBoardItem />
+    <div className="App bg-background">
+      <Routes>
+        <Route path={"*"} element={<Navigate to={"/jobs"} replace />}/>
+        <Route path={"/jobs"} element={<JobsBoardContainer />} />
+        <Route path={"/job/:jobId"} element={<DetailedJob />}/>
+      </Routes>
     </div>
   );
 }
